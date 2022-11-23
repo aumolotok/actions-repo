@@ -33,6 +33,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo Hello, world!
+          echo {{ env.TEST_STRING }}
           npm install
           tsc
 
@@ -41,4 +42,4 @@ jobs:
         id: fill-info
         uses: aumolotok/actions-repo/actions/fillRequest@main
         with: 
-          tacks_numbers: "${{ env.MY_VARIABLE }}"
+          tacks_numbers: "${{ env.TEST_STRING }}"
