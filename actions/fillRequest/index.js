@@ -37,6 +37,7 @@ const github = __importStar(require("@actions/github"));
 function fill() {
     return __awaiter(this, void 0, void 0, function* () {
         const token = core.getInput("token");
+        const tasks = core.getInput('tacks_numbers');
         const credentials = {
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
@@ -45,7 +46,7 @@ function fill() {
         const fs = require('fs');
         const ev = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
         const pullRequest = yield octokit.rest.pulls.get(Object.assign(Object.assign({}, credentials), { pull_number: ev.pull_request.number }));
-        yield octokit.rest.pulls.update(Object.assign(Object.assign({}, credentials), { pull_number: ev.pull_request.number, body: "test body" }));
+        yield octokit.rest.pulls.update(Object.assign(Object.assign({}, credentials), { pull_number: ev.pull_request.number, body: tasks }));
         // const info = core.getInput("pullRequestInfo")
         //console.log(`Hello to new pull request + ${token}`)
         console.log(`Hello to new pull request`);

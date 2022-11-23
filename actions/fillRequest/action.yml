@@ -3,6 +3,9 @@ name: "Add info to pull request"
 description: "Add test into pull request info"
 
 inputs:
+  tacks_numbers:
+    description: Task Numbers
+    required: true
   token:
     description: "Github token"
     default: ${{ github.token }}

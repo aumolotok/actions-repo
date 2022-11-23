@@ -5,6 +5,7 @@ import * as github from "@actions/github"
     async function fill() {
 
         const token = core.getInput("token");
+        const tasks = core.getInput('tacks_numbers');
 
         const credentials = {
             owner: github.context.repo.owner,
@@ -32,7 +33,7 @@ import * as github from "@actions/github"
         await octokit.rest.pulls.update({
             ...credentials,
             pull_number: ev.pull_request.number,
-            body: "test body"
+            body: tasks
         })
         
 
