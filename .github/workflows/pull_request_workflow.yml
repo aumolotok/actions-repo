@@ -31,6 +31,6 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: ill request with info
+      - name: fill request with info
         id: fill-info
         uses: aumolotok/actions-repo/actions/fillRequest@main
