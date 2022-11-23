@@ -54,6 +54,6 @@ function fill() {
 }
 function prepareLinks(ids) {
     const links = ids.map(id => `[${id}](https://agroclub.atlassian.net/browse/${id})`);
-    return links.join("\\n");
+    return links.join("<br/>");
 }
 fill();

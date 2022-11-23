@@ -42,7 +42,7 @@ import * as github from "@actions/github"
     function prepareLinks(ids : String[]){
         const links = ids.map(id => `[${id}](https://agroclub.atlassian.net/browse/${id})`)
 
-        return links.join("\\n")
+        return links.join("<br/>")
 
 
     }
