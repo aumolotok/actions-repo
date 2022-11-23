@@ -22,16 +22,11 @@ import * as github from "@actions/github"
         fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
         )
 
-        const pullRequest = await octokit.rest.pulls.get({
-            ...credentials,
-            pull_number: ev.pull_request.number
-        })
-
 
         await octokit.rest.pulls.update({
             ...credentials,
             pull_number: ev.pull_request.number,
-            body: tasks
+            body: prepareLinks(tasks.split(","))
         })
         
 
@@ -41,6 +36,14 @@ import * as github from "@actions/github"
 
         //console.log(`Hello to new pull request + ${token}`)
         console.log(`Hello to new pull request`)
+
+    }
+
+    function prepareLinks(ids : String[]){
+        const links = ids.map(id => `[${id}](https://agroclub.atlassian.net/browse/${id})`)
+
+        return links.join("\\n")
+
 
     }
 

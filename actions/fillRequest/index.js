@@ -46,11 +46,14 @@ function fill() {
         const octokit = github.getOctokit(token);
         const fs = require('fs');
         const ev = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
-        const pullRequest = yield octokit.rest.pulls.get(Object.assign(Object.assign({}, credentials), { pull_number: ev.pull_request.number }));
-        yield octokit.rest.pulls.update(Object.assign(Object.assign({}, credentials), { pull_number: ev.pull_request.number, body: tasks }));
+        yield octokit.rest.pulls.update(Object.assign(Object.assign({}, credentials), { pull_number: ev.pull_request.number, body: prepareLinks(tasks.split(",")) }));
         // const info = core.getInput("pullRequestInfo")
         //console.log(`Hello to new pull request + ${token}`)
         console.log(`Hello to new pull request`);
     });
+}
+function prepareLinks(ids) {
+    const links = ids.map(id => `[${id}](https://agroclub.atlassian.net/browse/${id})`);
+    return links.join("\\n");
 }
 fill();
