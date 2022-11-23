@@ -7,16 +7,14 @@ import * as github from "@actions/github"
         const token = core.getInput("token");
         const tasks = core.getInput('tacks_numbers');
 
+        console.log("parameters = " + tasks);
+
         const credentials = {
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
         };
 
         const octokit = github.getOctokit(token);
-
-        
-
-
 
 
         const fs = require('fs')

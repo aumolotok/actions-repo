@@ -5,6 +5,7 @@ description: "Add test into pull request info"
 inputs:
   tacks_numbers:
     description: Task Numbers
+    default: "Some default text"
     required: true
   token:
     description: "Github token"

@@ -38,6 +38,7 @@ function fill() {
     return __awaiter(this, void 0, void 0, function* () {
         const token = core.getInput("token");
         const tasks = core.getInput('tacks_numbers');
+        console.log("parameters = " + tasks);
         const credentials = {
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
