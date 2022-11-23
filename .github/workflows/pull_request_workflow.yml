@@ -31,6 +31,7 @@ jobs:
         run: |
           echo Hello, world!
           yarn install
+          tsc
 
       # Runs a set of commands using the runners shell
       - name: fill request with info
