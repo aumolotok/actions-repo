@@ -13,6 +13,8 @@ import * as github from "@actions/github"
 
         const octokit = github.getOctokit(token);
 
+        
+
 
 
 
@@ -20,8 +22,21 @@ import * as github from "@actions/github"
         const ev = JSON.parse(
         fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
         )
-        console.log(ev)
-        const prNum = ev.pull_request.number
+
+        const pullRequest = await octokit.rest.pulls.get({
+            ...credentials,
+            pull_number: ev.pull_request.number
+        })
+
+
+        await octokit.rest.pulls.update({
+            ...credentials,
+            pull_number: ev.pull_request.number,
+            body: "test body"
+        })
+        
+
+
 
         // const info = core.getInput("pullRequestInfo")
 

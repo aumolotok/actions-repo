@@ -44,8 +44,8 @@ function fill() {
         const octokit = github.getOctokit(token);
         const fs = require('fs');
         const ev = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
-        console.log(ev);
-        const prNum = ev.pull_request.number;
+        const pullRequest = yield octokit.rest.pulls.get(Object.assign(Object.assign({}, credentials), { pull_number: ev.pull_request.number }));
+        yield octokit.rest.pulls.update(Object.assign(Object.assign({}, credentials), { pull_number: ev.pull_request.number, body: "test body" }));
         // const info = core.getInput("pullRequestInfo")
         //console.log(`Hello to new pull request + ${token}`)
         console.log(`Hello to new pull request`);
