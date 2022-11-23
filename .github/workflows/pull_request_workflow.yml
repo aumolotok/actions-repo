@@ -41,4 +41,4 @@ jobs:
         id: fill-info
         uses: aumolotok/actions-repo/actions/fillRequest@main
         with: 
-          tacks_numbers: ${{ env.MY_VARIABLE }}
+          tacks_numbers: "${{ env.MY_VARIABLE }}"
