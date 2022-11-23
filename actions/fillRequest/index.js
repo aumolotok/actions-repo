@@ -1,4 +1,6 @@
 "use strict";
+// import * as core from "@actions/core"
+// import * as github from "@actions/github"
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,12 +10,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-// import * as core from "@actions/core"
-// import * as github from "@actions/github"
-const core = require("@actions/core");
 function fill() {
     return __awaiter(this, void 0, void 0, function* () {
-        //const token = core.getInput("token");
+        const core = require("@actions/core");
+        const token = core.getInput("token");
         // const info = core.getInput("pullRequestInfo")
         //console.log(`Hello to new pull request + ${token}`)
         console.log(`Hello to new pull request`);
