@@ -1,0 +1,16 @@
+name: "Add info to pull request"
+
+description: "Add test into pull request info"
+
+inputs:
+  token:
+    description: "Github token"
+    default: ${{ github.token }}
+  pullRequestInfo:
+    description: "Text to add in pull request"
+    default: "Here is info text"
+    # required: true
+
+runs:
+  using: node16
+  main: index.js
